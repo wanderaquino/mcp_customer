@@ -1,0 +1,39 @@
+{
+    "name": "mcp-api-security-workspace",
+    "version": "1.0.2",
+    "private": false,
+    "description": "Monorepo para estudo de MCP, Langchain e Fastify/MongoDB",
+    "workspaces": [
+        "customers-mcp*",
+        "mcp_agent_langchain",
+        "nodejs-fastify-mongodb-crud*"
+    ],
+    "scripts": {
+        "postinstall": "npm run build --workspaces --if-present",
+        "build": "cd customers-mcp-z && chmod 755 src/index.ts",
+        "dev:api": "npm run dev --workspace=testes-com-bancos-de-dados",
+        "dev:mcp": "npm run dev --workspace=multiple-mcp-tools",
+        "dev:client": "npm run dev --workspace=@wanderaquino/customers-mcp",
+        "dev:all": "npx concurrently -c \"green,blue,magenta\" -n \"API,MCP,CLIENT\" \"npm run dev:api\" \"npm run dev:mcp\" \"npm run dev:client\"",
+        "start:all": "npm start --workspaces --if-present",
+        "test:all": "npm test --workspaces --if-present",
+        "infra:up": "cd nodejs-fastify-mongodb-crud-z && docker compose up -d",
+        "infra:down": "cd nodejs-fastify-mongodb-crud-z && docker compose down",
+        "infra:clean": "cd nodejs-fastify-mongodb-crud-z && docker compose down -v --remove-orphans",
+        "infra:logs": "cd nodejs-fastify-mongodb-crud-z && docker compose logs -f",
+        "registry:start": "cd customers-mcp-z && docker compose -f docker-compose.yml up -d",
+        "registry:stop": "cd customers-mcp-z && docker compose -f docker-compose.yml down",
+        "registry:logs": "cd customers-mcp-z && docker compose -f docker-compose.yml logs -f",
+        "registry:login:private": "npm login --registry http://localhost:4873",
+        "release:private": "npm run release:private --workspace=@wanderaquino/customers-mcp",
+        "clean": "npm run clean --workspaces --if-present && rm -rf node_modules"
+    },
+    "author": "wanderaquino",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}

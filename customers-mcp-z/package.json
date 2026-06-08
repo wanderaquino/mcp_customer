@@ -1,0 +1,42 @@
+{
+  "name": "@wanderaquino/customers-mcp",
+  "version": "0.0.15",
+  "description": "MCP server that exposes a customer CRUD API as tools for use with GitHub Copilot and other MCP-compatible agents",
+  "main": "index.js",
+  "bin": {
+    "wanderaquino-customers-mcp": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "chmod 755 src/index.ts",
+    "start": "node src/index.ts",
+    "dev": "node --inspect src/index.ts",
+    "test": "node --test tests/**/*.test.ts",
+    "mcp:inspect": "npx @modelcontextprotocol/inspector node src/index.ts",
+    "test:dev": "node --inspect --test --watch tests/**/*.test.ts",
+    "test:unit:dev": "node --inspect --test --watch tests/**/*unit.test.ts",
+    "test:unit": "node --inspect --test tests/**/*unit.test.ts",
+    "test:e2e:dev": "node --inspect --test --watch tests/**/*e2e.test.ts",
+    "test:e2e": "node --inspect --test tests/**/*e2e.test.ts",
+    "registry:start": "docker compose -f docker-compose.yaml up -d",
+    "registry:stop": "docker compose -f docker-compose.yaml down",
+    "registry:logs": "docker compose -f docker-compose.yaml logs -f",
+    "registry:login:private": "npm login --registry http://localhost:4873",
+    "release:private": "npm version patch && npm publish --registry http://localhost:4873"
+  },
+  "keywords": [],
+  "author": "wanderaquino",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@types/node": "^24.11.0",
+    "zod": "^3.25.76",
+    "tsx": "^4.22.4"
+  }
+}

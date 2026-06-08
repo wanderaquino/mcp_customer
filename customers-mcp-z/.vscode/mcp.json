@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "customers-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "--registry",
+        "http://localhost:4873",
+        "@wanderaquino/customers-mcp@latest"
+      ],
+      "env": {
+        "SERVICE_TOKEN": "ba89f930-58a6-4cd1-8d08-fa803d0177a1"
+      },
+    }
+  }
+}
