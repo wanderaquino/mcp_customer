@@ -14,21 +14,6 @@ Este projeto demonstra como realizar operações CRUD usando Node.js com o frame
 - Node.js (versão 20 ou superior)
 - MongoDB (instância local ou na nuvem)
 
-### Instalação
-
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/ErickWendel/nodejs-fastify-mongodb-crud.git
-   cd nodejs-fastify-mongodb-crud
-   ```
-
-2. Instale as dependências:
-
-   ```bash
-   npm ci
-   ```
-
 ### Executando os testes
 
 Para executar os testes e visualizar a cobertura de código:
